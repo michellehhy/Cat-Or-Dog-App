@@ -13,12 +13,17 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            //cannot create image from data directly, create a UI image first
-            Image(uiImage: UIImage(data: model.animal.imageData ?? Data()) ?? UIImage())
-                .resizable()
-                .scaledToFill()
-                .clipped()
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            GeometryReader{geometry in
+                //cannot create image from data directly, create a UI image first
+                Image(uiImage: UIImage(data: model.animal.imageData ?? Data()) ?? UIImage())
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .clipped()
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                
+            }
+            
             
             HStack{
                 Text("What is it?")
@@ -35,6 +40,14 @@ struct ContentView: View {
                 })
                 .padding(.trailing, 10)
                 
+            }
+            
+            List(model.animal.results) {result in
+                HStack {
+                    Text(result.imageLabel)
+                    Spacer()
+                    Text(String(format: "%.2f%%", result.confidence * 100))
+                }
             }
         }
         .onAppear(perform: model.getAnimal)

@@ -39,8 +39,8 @@ class AnimalModel: ObservableObject {
                             
                             DispatchQueue.main.async {
                                 
-                                //update after imagedata is loaded
-                                while animal.imageData == nil {
+                                //update after results is loaded
+                                while animal.results.isEmpty {
                                 
                                 }
                                 self.animal = animal

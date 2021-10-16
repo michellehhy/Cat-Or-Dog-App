@@ -6,6 +6,14 @@
 //
 
 import Foundation
+import CoreML
+import Vision
+
+struct Result: Identifiable {
+    var imageLabel: String
+    var confidence: Double
+    var id = UUID()
+}
 
 class Animal {
     
@@ -15,9 +23,15 @@ class Animal {
     // image data
     var imageData: Data?
     
+    //classified results
+    var results: [Result]
+    
+    let modelFile = try! CatOrDog_1(configuration: MLModelConfiguration())
+    
     init(){
         self.imageUrl = ""
         self.imageData = nil
+        self.results = []
     }
     
     //optional initialiser that can return nil
@@ -31,6 +45,7 @@ class Animal {
         //set animal properties
         self.imageUrl = imageUrl
         self.imageData = nil
+        self.results = []
         
         //dl image
         getImage()
@@ -54,11 +69,44 @@ class Animal {
             
             if error == nil && data != nil {
                 self.imageData = data
+                self.classifyAnimal()
             }
         }
         
         //start data task
         dataTask.resume()
+    }
+    
+    func classifyAnimal() {
+        
+        //get reference to the model
+        let model = try! VNCoreMLModel(for: modelFile.model)
+        
+        //create an image handler
+        let handler = VNImageRequestHandler(data:imageData!)
+        
+        //create request to the model
+        let request = VNCoreMLRequest(model: model) { request, error in
+           
+            guard let results = request.results as? [VNClassificationObservation] else{
+                print("Couldn't classify animal")
+                return
+            }
+            
+            for classification in results {
+                
+                var identifier = classification.identifier
+                identifier = identifier.prefix(1).capitalized + identifier.dropFirst()
+                self.results.append(Result(imageLabel: identifier, confidence: Double(classification.confidence)))
+            }
+        }
+        //execute the request
+        do {
+            try handler.perform([request])
+        }catch {
+            print("Invalid Image")
+        }
+        
     }
     
     
