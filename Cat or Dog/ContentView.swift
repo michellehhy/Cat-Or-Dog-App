@@ -41,18 +41,27 @@ struct ContentView: View {
                 .padding(.trailing, 10)
                 
             }
-            
-            List(model.animal.results) {result in
-                HStack {
-                    Text(result.imageLabel)
-                    Spacer()
-                    Text(String(format: "%.2f%%", result.confidence * 100))
+            if #available(iOS 14.0, *) {
+                ScrollView {
+                    LazyVStack {
+                        ForEach(model.animal.results) {result in AnimalRow(imageLabel: result.imageLabel, confidence: result.confidence)
+                            .padding(.horizontal)
+                        }
+                    }
                 }
+            }else {
+                List(model.animal.results) {result in
+                    AnimalRow(imageLabel: result.imageLabel, confidence: result.confidence)
+                        .padding(.horizontal)
+                }
+
+            
             }
         }
         .onAppear(perform: model.getAnimal)
         //show text when image is shown
         .opacity(model.animal.imageData == nil ? 0 :1 )
+        .animation(.easeIn)
         
     }
 }

@@ -17,6 +17,8 @@
 		32F1EA08271B7C0C003D72EC /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1EA07271B7C0C003D72EC /* Animal.swift */; };
 		32F1EA0A271B7D2F003D72EC /* AnimalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1EA09271B7D2F003D72EC /* AnimalModel.swift */; };
 		32F1EA0C271B90CA003D72EC /* CatOrDog 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 32F1EA0B271B90C9003D72EC /* CatOrDog 1.mlmodel */; };
+		32F1EA0E271B91CB003D72EC /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1EA0D271B91CB003D72EC /* ProgressBar.swift */; };
+		32F1EA10271B9373003D72EC /* AnimalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1EA0F271B9373003D72EC /* AnimalRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		32F1EA07271B7C0C003D72EC /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		32F1EA09271B7D2F003D72EC /* AnimalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalModel.swift; sourceTree = "<group>"; };
 		32F1EA0B271B90C9003D72EC /* CatOrDog 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "CatOrDog 1.mlmodel"; sourceTree = "<group>"; };
+		32F1EA0D271B91CB003D72EC /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		32F1EA0F271B9373003D72EC /* AnimalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 				3271F3EB270715640003CE22 /* MobileNetV2.mlmodel */,
 				3271F3EC270715640003CE22 /* sample.json */,
 				32F1EA07271B7C0C003D72EC /* Animal.swift */,
+				32F1EA0D271B91CB003D72EC /* ProgressBar.swift */,
+				32F1EA0F271B9373003D72EC /* AnimalRow.swift */,
 				32F1EA09271B7D2F003D72EC /* AnimalModel.swift */,
 				3271F3DF270713D30003CE22 /* Assets.xcassets */,
 				3271F3E4270713D40003CE22 /* Info.plist */,
@@ -161,8 +167,10 @@
 				32F1EA0A271B7D2F003D72EC /* AnimalModel.swift in Sources */,
 				3271F3DC270713CD0003CE22 /* Cat_or_DogApp.swift in Sources */,
 				3271F3EE270715640003CE22 /* MobileNetV2.mlmodel in Sources */,
+				32F1EA10271B9373003D72EC /* AnimalRow.swift in Sources */,
 				32F1EA0C271B90CA003D72EC /* CatOrDog 1.mlmodel in Sources */,
 				3271F3ED270715640003CE22 /* Constants.swift in Sources */,
+				32F1EA0E271B91CB003D72EC /* ProgressBar.swift in Sources */,
 				32F1EA08271B7C0C003D72EC /* Animal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
